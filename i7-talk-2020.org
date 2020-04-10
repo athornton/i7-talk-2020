@@ -7,14 +7,20 @@
 #+REVEAL_PLUGINS: (highlight)
 
 * A brief introduction to the Inform 7 text adventure programming language
-** Adam Thornton, 2020
+** Adam Thornton, April 2020
+
+https://github.com/athornton/i7-talk-2020
+
+[[./assets/qr.png]]
+
 CC BY-NC 4.0
 
 https://creativecommons.org/licenses/by-nc/4.0/legalcode
-** Graham Nelson, after Don Knuth
+** Inform 7
+*** by Graham Nelson, after Don Knuth
 *** ...and Crowther and Woods, and Anderson, Blank, Lebling, and Daniels
 *** ...and Roberts and Tessman and Plotkin
-*** ...and a host of others
+*** ...and a host of others.
 ** Parser-based Text Adventures
 *** For a brief shining moment, the most popular form of computer entertainment.
 *** [[./assets/starcross.jpg]]
