@@ -1,6 +1,6 @@
 #+OPTIONS: num:nil
 #+OPTIONS: toc:nil
-#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js@3.9.2
 #+REVEAL_HLEVEL: 2
 #+REVEAL_THEME: night
 #+REVEAL_INIT_OPTIONS: slideNumber: h/v
