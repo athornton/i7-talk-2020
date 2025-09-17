@@ -1,15 +1,23 @@
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
 #+OPTIONS: num:nil
 #+OPTIONS: toc:nil
-#+REVEAL_ROOT: https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2
 #+REVEAL_HLEVEL: 2
 #+REVEAL_THEME: night
-#+REVEAL_INIT_OPTIONS: slideNumber: h/v
+#+REVEAL_INIT_OPTIONS: slideNumber: "h/v"
 #+REVEAL_PLUGINS: (highlight)
+#+LATEX_COMPILER: lualatex
+#+LATEX_CLASS_OPTIONS: [10pt]
+#+LATEX_HEADER: \usepackage{fontspec}
+#+LATEX_HEADER: \setsansfont{Verdana}
+#+LATEX_HEADER: \setmainfont{Verdana}
+#+AUTHOR: Adam Thornton
+#+EMAIL: athornton@gmail.com
+#+TITLE: Inform 7
 
 * A brief introduction to the Inform 7 text adventure programming language
 ** Adam Thornton, April 2020
 
-https://github.com/athornton/i7-talk-2020
+https://github.com/athornton/i7-talk-2020 [[./i7-talk-2020.pdf][(PDF]])
 
 [[./assets/qr.png]]
 
