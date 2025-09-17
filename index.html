@@ -1,1 +1,553 @@
-i7-talk-2020.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Inform 7</title>
+<meta name="author" content="Adam Thornton"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/night.css" id="theme"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/zenburn.css"/>
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide"><h1 class="title">Inform 7</h1><p class="subtitle"></p>
+<h2 class="author">Adam Thornton</h2><p class="date">Created: 2025-09-17 Wed 05:35</p>
+</section>
+<section>
+<section id="slide-org4c0d508">
+<h2 id="org4c0d508">A brief introduction to the Inform 7 text adventure programming language</h2>
+<div class="outline-text-2" id="text-org4c0d508">
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgbee1ca3">
+<h3 id="orgbee1ca3">Adam Thornton, April 2020</h3>
+<p>
+<a href="https://github.com/athornton/i7-talk-2020">https://github.com/athornton/i7-talk-2020</a> <a href="./i7-talk-2020.pdf">(PDF</a>)
+</p>
+
+
+<div id="org79aae54" class="figure">
+<p><img src="./assets/qr.png" alt="qr.png" />
+</p>
+</div>
+
+<p>
+CC BY-NC 4.0
+</p>
+
+<p>
+<a href="https://creativecommons.org/licenses/by-nc/4.0/legalcode">https://creativecommons.org/licenses/by-nc/4.0/legalcode</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgb6618b0">
+<h3 id="orgb6618b0">Inform 7</h3>
+<div class="outline-text-3" id="text-orgb6618b0">
+</div>
+</section>
+<section id="slide-org9d6da2d">
+<h4 id="org9d6da2d">by Graham Nelson, after Don Knuth</h4>
+</section>
+<section id="slide-org2498cbb">
+<h4 id="org2498cbb">&#x2026;and Crowther and Woods, and Anderson, Blank, Lebling, and Daniels</h4>
+</section>
+<section id="slide-org6b01127">
+<h4 id="org6b01127">&#x2026;and Roberts and Tessman and Plotkin</h4>
+</section>
+<section id="slide-org5ed9683">
+<h4 id="org5ed9683">&#x2026;and a host of others.</h4>
+</section>
+</section>
+<section>
+<section id="slide-orgdc3e025">
+<h3 id="orgdc3e025">Parser-based Text Adventures</h3>
+<div class="outline-text-3" id="text-orgdc3e025">
+</div>
+</section>
+<section id="slide-org404338f">
+<h4 id="org404338f">For a brief shining moment, the most popular form of computer entertainment.</h4>
+</section>
+<section id="slide-orgaa5fd66">
+<h4 id="orgaa5fd66"><img src="./assets/starcross.jpg" alt="starcross.jpg" /></h4>
+<p>
+Get offa my lawn!
+</p>
+</section>
+<section id="slide-org3879cec">
+<h4 id="org3879cec">&#x2026;and a very, very long post-commercial life (1990-present)&#x2026;</h4>
+<p>
+"Interactive fiction."
+</p>
+</section>
+<section id="slide-orgd44e3d6">
+<h4 id="orgd44e3d6">&#x2026;frequently used to storyboard games that will have expensive assets.</h4>
+<p>
+Good way to prototype puzzle design, for instance.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgbc4c078">
+<h3 id="orgbc4c078">How were these written, historically?</h3>
+<div class="outline-text-3" id="text-orgbc4c078">
+</div>
+</section>
+<section id="slide-orga39b888">
+<h4 id="orga39b888">Adventure: FORTRAN/PDP-10/TOPS-10</h4>
+
+<div id="org04cabfc" class="figure">
+<p><img src="./assets/KI-10.jpg" alt="KI-10.jpg" />
+</p>
+</div>
+
+<p>
+<a href="http://www.literateprogramming.com/adventure.pdf">http://www.literateprogramming.com/adventure.pdf</a> may be the best paper
+ever written about a computer program.
+</p>
+
+<p>
+(KI-10 Picture from Wikipedia user Gah4, CC BY-SA 4.0)
+</p>
+</section>
+<section id="slide-org8a3dca7">
+<h4 id="org8a3dca7">Zork: MDL/PDP-10/ITS</h4>
+<p>
+<a href="https://github.com/historicalsource/zork">https://github.com/historicalsource/zork</a>
+</p>
+
+<p>
+Ported to FORTRAN by Bob Supnik.  That's the one you've played.
+</p>
+</section>
+<section id="slide-org3cd5a17">
+<h4 id="org3cd5a17">Infocom: ZIL/PDP-10/TOPS-20</h4>
+<p>
+<a href="https://github.com/historicalsource/">https://github.com/historicalsource/</a>
+</p>
+
+<p>
+The Z-Machine was the magic that enabled easy porting and very big (for
+the time) games.
+</p>
+</section>
+<section id="slide-org0f6660c">
+<h4 id="org0f6660c">Post-Infocom: AGT, TADS</h4>
+<div class="outline-text-4" id="text-org0f6660c">
+</div>
+<ul class="org-ul">
+<li><a id="orga18761b"></a>Even later: Hugo, ChoiceScript, Twine&#x2026;<br /></li>
+</ul>
+</section>
+<section id="slide-org4bb2a26">
+<h4 id="org4bb2a26">Inform: Graham Nelson, 1993 -&gt; Inform 6, 1996</h4>
+<div class="outline-text-4" id="text-org4bb2a26">
+</div>
+<ul class="org-ul">
+<li><a id="orgf9c5542"></a>Compiles to Infocom Z-machine.<br /></li>
+<li><a id="orgf1bc73e"></a><a href="https://en.wikipedia.org/wiki/Inform#The_Inform_6_programming_language">https://en.wikipedia.org/wiki/Inform#The_Inform_6_programming_language</a><br /></li>
+</ul>
+</section>
+<section id="slide-org3660ea2">
+<h4 id="org3660ea2">Inform 7: Graham Nelson, 2006</h4>
+</section>
+</section>
+<section>
+<section id="slide-org6275efe">
+<h3 id="org6275efe">Compilation Target</h3>
+<div class="outline-text-3" id="text-org6275efe">
+</div>
+</section>
+<section id="slide-org4cc2c48">
+<h4 id="org4cc2c48">Z-machine: 16-bit virtual machine</h4>
+<div class="outline-text-4" id="text-org4cc2c48">
+</div>
+<ul class="org-ul">
+<li><a id="org959cfa0"></a>Most Infocom games version 3 (&lt;= 128K)<br /></li>
+<li><a id="org83ebee2"></a>Late Infocom games version 5 (&lt;= 256K)<br /></li>
+<li><a id="org0e23492"></a>Little-used graphical variant version 6 (&lt;= 256K)<br /></li>
+<li><a id="org5db6306"></a>Post-Infocom version 8 (&lt;= 512K)<br /></li>
+<li><a id="orgbb6e8c2"></a>Finally, Glulx (32-bit Z-Machine-inspired VM, Plotkin 1999)<br /></li>
+<li><a id="org9559f22"></a>I7 produces Z8 or Glulx<br /></li>
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org3e9b7dd">
+<h3 id="org3e9b7dd">What's it like?</h3>
+<div class="outline-text-3" id="text-org3e9b7dd">
+</div>
+</section>
+<section id="slide-orgf96af9c">
+<h4 id="orgf96af9c">The experience of <b>writing</b> an adventure game should be much like the experience of <b>playing</b> one.</h4>
+</section>
+<section id="slide-org7f0ac76">
+<h4 id="org7f0ac76">Designed for nonprogrammers:</h4>
+<div class="outline-text-4" id="text-org7f0ac76">
+</div>
+<ul class="org-ul">
+<li><a id="org4b8a440"></a>In the tradition of BASIC, Hypercard, Scratch&#x2026;<br /></li>
+<li><a id="orgd008d47"></a>&#x2026;and COBOL.<br /></li>
+</ul>
+</section>
+<section id="slide-orgca3d5ee">
+<h4 id="orgca3d5ee">Graham on Inform 7 design:</h4>
+<p>
+<a href="http://inform7.com/talks/2018/06/09/london.html">http://inform7.com/talks/2018/06/09/london.html</a>
+</p>
+</section>
+<section id="slide-orgb05b091">
+<h4 id="orgb05b091">Literate Programming</h4>
+<div class="outline-text-4" id="text-orgb05b091">
+</div>
+<ul class="org-ul">
+<li><a id="orgbdab793"></a>I need to talk to Graham about Jupyter as a resurgence of LP.<br /></li>
+</ul>
+</section>
+<section id="slide-orgd133a66">
+<h4 id="orgd133a66">Declarative</h4>
+</section>
+<section id="slide-orgd8d6f79">
+<h4 id="orgd8d6f79">Hello, World</h4>
+<div class="org-src-container">
+
+<pre   ><code class="inform7" >"Hello World" by Adam Thornton.
+Hello World is a room.
+</code></pre>
+</div>
+<p>
+Note that identifiers can have spaces (and other odd characters) in them.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org9a184e0">
+<h3 id="org9a184e0">IDE is an integral part of the intended experience</h3>
+
+<div id="org1cb46b0" class="figure">
+<p><img src="./assets/I7UI.png" alt="I7UI.png" />
+</p>
+</div>
+</section>
+<section id="slide-org991dde3">
+<h4 id="org991dde3">But not, strictly speaking, a necessary one.</h4>
+<p>
+I maintain the Linux CLI port.
+</p>
+</section>
+<section id="slide-org1ab55ca">
+<h4 id="org1ab55ca">However, the IDE is a joy to use.</h4>
+<div class="outline-text-4" id="text-org1ab55ca">
+</div>
+<ul class="org-ul">
+<li><a id="orgd4ddb6a"></a>Integrated documentation, both reference and recipe book<br /></li>
+<li><a id="org978208c"></a>Testing panel lets you do regression testing and diverging-output-at-nodes<br /></li>
+<li><a id="org3693d83"></a>Excellent indexing facility with automapping<br /></li>
+<li><a id="orgf18db46"></a>Good source-level debugger<br /></li>
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgc0d837c">
+<h3 id="orgc0d837c">How suitable is it for writing text adventures?</h3>
+<div class="outline-text-3" id="text-orgc0d837c">
+</div>
+</section>
+<section id="slide-org9ca4353">
+<h4 id="org9ca4353">I have written a 160,000 word game in it.</h4>
+<div class="outline-text-4" id="text-org9ca4353">
+</div>
+<ul class="org-ul">
+<li><a id="orgbff67fa"></a><a href="https://www.stiffymakane.com/MMA">https://www.stiffymakane.com/MMA</a><br />
+<ul class="org-ul">
+<li><a id="org9c3fa9c"></a>WARNING: NOT SAFE FOR WORK.  NOT KIDDING.<br /></li>
+<li><a id="org7ed82a5"></a>160,000 word pornographic text adventure, 175 rooms, 735 things&#x2026;<br /></li>
+<li><a id="org98fe2d1"></a>&#x2026;set in the waning days of the Roman Republic.<br /></li>
+<li><a id="org2693836"></a>What?<br /></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="slide-orgf724c83">
+<h4 id="orgf724c83">Blue Lacuna is about twice that size(!)</h4>
+<p>
+Far, far more output text than any commercial text adventure ever.
+</p>
+<ul class="org-ul">
+<li><a id="orgc1effb7"></a><a href="https://blue-lacuna.textories.com/">https://blue-lacuna.textories.com/</a><br /></li>
+<li><a id="org78b596a"></a><a href="https://blue-lacuna.textories.com/source/source.html">https://blue-lacuna.textories.com/source/source.html</a><br /></li>
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orge3516f3">
+<h3 id="orge3516f3">Find Inform 7 at <a href="http://inform7.com">http://inform7.com</a></h3>
+<div class="outline-text-3" id="text-orge3516f3">
+</div>
+</section>
+<section id="slide-org5e9251d">
+<h4 id="org5e9251d">Not Open Source yet (although it was announced for last fall)&#x2026;.</h4>
+</section>
+<section id="slide-orgaf1f6f3">
+<h4 id="orgaf1f6f3">Inform 7 itself is a very large literate program, written in Inweb (a superset of a subset of CWEB)</h4>
+</section>
+<section id="slide-orgddb1adf">
+<h4 id="orgddb1adf"><a href="https://github.com/ganelson">https://github.com/ganelson</a> (someday)</h4>
+</section>
+</section>
+<section>
+<section id="slide-org38df878">
+<h3 id="org38df878">What does it simulate?</h3>
+<div class="outline-text-3" id="text-org38df878">
+</div>
+</section>
+<section id="slide-org57a6468">
+<h4 id="org57a6468">A physical world</h4>
+<p>
+Rooms are topologically connected, there are objects, some of which are
+mobile&#x2026;
+</p>
+</section>
+<section id="slide-org461039c">
+<h4 id="org461039c">But more like a stage-set than a physical simulation</h4>
+<p>
+The language encourages this: objects are "off-stage", "remove X from
+play," and sense-modelling and object-player interaction are primitive.
+Cf. TADS 3.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgef42f3c">
+<h3 id="orgef42f3c">Language features</h3>
+<div class="outline-text-3" id="text-orgef42f3c">
+</div>
+</section>
+<section id="slide-org13e0f05">
+<h4 id="org13e0f05">Locations defined declaratively, implicitly transitive.</h4>
+<div class="org-src-container">
+
+<pre   ><code class="inform7" >Scotland is a region.  Edinburgh, Glasgow, and Aberdeen are rooms in Scotland.
+Aberdeen is northeast of Glasgow.  Edinburgh is east of Glasgow.
+
+Glasgow is a room.  "Gray and grim." [ This sets the "initial appearance" property. ]
+</code></pre>
+</div>
+</section>
+<section id="slide-org061f151">
+<h4 id="org061f151">Populating the world is declarative:</h4>
+<div class="org-src-container">
+
+<pre   ><code class="inform7" >The wooden table is a supporter in the kitchen. "A wobbly wooden table rests unsteadily on the floor." The description is "The table looks unsteady."
+Understand “wobbly” and “unsteady” as the table. [ Synonyms ]
+Some butter is on the wooden table.  The butter can be edible. It is edible. [ Properties ]
+</code></pre>
+</div>
+</section>
+<section id="slide-org1f3cd58">
+<h4 id="org1f3cd58">Adjectives used in play and in world-construction.</h4>
+<div class="org-src-container">
+
+<pre   ><code class="inform7" >[ Define a new kind, and then use it as an adjective. ]
+Shininess is a kind of value.  The shininesses are shiny and dull.
+
+A coin has a shininess.  A coin is usually dull.
+
+The Bank is a room.  The penny is a shiny coin in the Bank.
+</code></pre>
+</div>
+</section>
+<section id="slide-orge2f055d">
+<h4 id="orge2f055d">Defining new actions</h4>
+<div class="org-src-container">
+
+<pre   ><code class="inform7" >Understand the command "feed" as something new.  Understand "feed [something preferably held] to [something]" as feeding it to.  Understand "feed [something] [something preferably held]" as feeding it to (with nouns reversed).
+Feeding it to is an action applying to two things.
+Carry out feeding it to:
+        if the second noun is not a person, instead try inserting the noun into the second noun;
+        if the second noun is the player, instead try eating the noun;
+        instead try giving the noun to the second noun.
+</code></pre>
+</div>
+</section>
+<section id="slide-org406512d">
+<h4 id="org406512d">Rule-based</h4>
+<p>
+The most important ones are "before", "instead", "after", and "check
+&lt;action&gt;", "carry out &lt;action&gt;", "report &lt;action&gt;".
+</p>
+<div class="org-src-container">
+
+<pre   ><code class="inform7" >Instead of a suspicious person (called the suspect) burning something which is evidence against the suspect when the number of people in the location is at least two, try the suspect going a random valid direction.
+[ "Instead" is the rulebook name; "(called the suspect)" creates a scoped variable for reference within the same rule.  "Try" kicks off a new action and all its rulebooks.  "Valid" is an adjective applying to the kind "Direction". ]
+</code></pre>
+</div>
+</section>
+<section id="slide-org06f4920">
+<h4 id="org06f4920">Implicit loop variables:</h4>
+<div class="org-src-container">
+
+<pre   ><code class="inform7" >For printing a locale paragraph about a thing (called the item) (this is the forcibly set personal pronoun from items on supporters rule):
+        if the item is a supporter and the item does not enclose the player
+        begin;
+                repeat with the possibility running through things on the item
+                begin;
+                        if the possibility is a woman, forcibly set the female pronoun from the possibility;
+                        if the possibility is a man, forcibly set the male pronoun from the possibility;
+                        if the possibility is a neuter animal, forcibly set the neuter pronoun from the possibility;
+                end repeat;
+        end if;
+        continue the activity.
+</code></pre>
+</div>
+</section>
+<section id="slide-orge853b52">
+<h4 id="orge853b52">You can also, if you prefer, use Python semantic indentation rather than "begin/end".</h4>
+</section>
+<section id="slide-org5bdbba1">
+<h4 id="org5bdbba1">Tables take the role of structs.</h4>
+
+<div id="org1e074e8" class="figure">
+<p><img src="./assets/table.png" alt="table.png" />
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org9960ac2"></a>Rows and columns<br /></li>
+<li><a id="orgfba117f"></a>Things in a column are of the same type.<br /></li>
+</ul>
+</section>
+<section id="slide-org3009f36">
+<h4 id="org3009f36">Lists support apply, filter, and reduce&#x2026;but not lazy evaluation.</h4>
+</section>
+<section id="slide-org9df710a">
+<h4 id="org9df710a">Dimensional analysis (what?)</h4>
+<div class="org-src-container">
+
+<pre   ><code class="inform7" >"Equation Playground" by Adam Thornton
+
+Part Zero - Definitions
+
+Include Metric Units by Graham Nelson.
+
+Part e - Equations
+
+Equation - Volume of a square parallelepiped
+        V=hl^2
+Where V is a volume, h is a length, and l is a length.
+
+Equation - Area of a square
+        A=l^2
+Where A is an area and l is a length.
+
+Part pi - Objects
+
+Classroom is a room
+
+The infernal prism is a thing in Classroom.  It is fixed in place.
+
+Carry out examining the infernal prism:
+        Let V be a random volume between 10 cu m and 1000 cu m;
+        Let A be a random area between 10 sq m and 100 sq m;
+        let l be given by the area of a square;
+        let h be given by the volume of a square parallelepiped;
+        say "The infernal prism shifts again.  Now its height is [h].  Somehow you know its volume is [V] , so the side of its base must be [l]  and the area of its base [A].";
+        stop the action.
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgc1d1864">
+<h3 id="orgc1d1864">A more traditional programming approach to I7:</h3>
+<div class="outline-text-3" id="text-orgc1d1864">
+</div>
+</section>
+<section id="slide-org1b1d8a7">
+<h4 id="org1b1d8a7">Ron Newcomb, <a href="http://www.plover.net/~pscion/Inform%207%20for%20Programmers.pdf">http://www.plover.net/~pscion/Inform%207%20for%20Programmers.pdf</a></h4>
+
+</section>
+<section id="slide-orgedf5ddd">
+<h4 id="orgedf5ddd">May help impedance-match if you're more used to coding than writing.</h4>
+</section>
+</section>
+<section>
+<section id="slide-orgb5678a8">
+<h3 id="orgb5678a8">Changes coming in the open-source version, whenever that may be</h3>
+<div class="outline-text-3" id="text-orgb5678a8">
+</div>
+</section>
+<section id="slide-orge9a7bb0">
+<h4 id="orge9a7bb0">Two of Graham's talks cover a lot of this</h4>
+<p>
+<a href="http://inform7.com/talks/2018/06/09/london.html">http://inform7.com/talks/2018/06/09/london.html</a>
+<a href="http://inform7.com/talks/2019/06/14/narrascope.html">http://inform7.com/talks/2019/06/14/narrascope.html</a>
+</p>
+</section>
+<section id="slide-orgd3fce86">
+<h4 id="orgd3fce86">LLVM-inspired intermediate representation ("inter")</h4>
+<div class="outline-text-4" id="text-orgd3fce86">
+</div>
+<ul class="org-ul">
+<li><a id="org7cd388e"></a>Compile to Inform 6 (status quo), or C, or Javascript, or Unity (!!)<br /></li>
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-org22548ae">
+<h3 id="org22548ae">Give it a try!</h3>
+<div class="outline-text-3" id="text-org22548ae">
+</div>
+</section>
+<section id="slide-org64c0132">
+<h4 id="org64c0132">It's fun to try just plain <b>strange</b> languages sometimes.</h4>
+</section>
+<section id="slide-orgc24cb76">
+<h4 id="orgc24cb76">FRACTRAN</h4>
+<div class="outline-text-4" id="text-orgc24cb76">
+</div>
+<ul class="org-ul">
+<li><a id="org760f8cd"></a>A starting integer <i>n</i>, and an ordered list of fractions.<br /></li>
+<li><a id="orgc46702f"></a>For the first fraction <i>f</i> for which <i>nf</i> is an integer, replace <i>n</i> by <i>nf</i> and repeat.<br /></li>
+<li><a id="org4650ab9"></a>When no <i>nf</i> is an integer, halt.<br /></li>
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+slideNumber: "h/v",
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }]
+
+});
+
+</script>
+</body>
+</html>
